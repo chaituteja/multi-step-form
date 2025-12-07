@@ -5,10 +5,16 @@ export default function PersonalInfoPage() {
       <div className="flex flex-col gap-y-2">
         <label htmlFor="firstname">First Name</label>
         <input
-          className="border-1 border-[#FFF] focus:bg-[#FFEB00] outline-none p-2 focus:rounded-sm focus:text-[#2A004E] text-[#FFEB00] font-bold"
+          className="border border-[#FFF] focus:bg-[#FFEB00] outline-none p-2 focus:rounded-sm focus:text-[#2A004E] text-[#FFEB00] font-bold"
           id="firstname"
           type="text"
           required
+          onChange={(e) =>
+            dispatch({
+              type: "UPDATE_PERSONAL_INFO",
+              payload: { firstName: e.target.value },
+            })
+          }
         />
       </div>
       <div className="flex flex-col gap-y-2">
@@ -18,6 +24,12 @@ export default function PersonalInfoPage() {
           id="lastname"
           type="text"
           required
+          onChange={(e) =>
+            dispatch({
+              type: "UPDATE_PERSONAL_INFO",
+              payload: { lastName: e.target.value },
+            })
+          }
         />
       </div>
       <div className="flex flex-col gap-y-2">
@@ -27,6 +39,12 @@ export default function PersonalInfoPage() {
           id="email"
           type="email"
           required
+          onChange={(e) =>
+            dispatch({
+              type: "UPDATE_PERSONAL_INFO",
+              payload: { email: e.target.value },
+            })
+          }
         />
       </div>
       <button
