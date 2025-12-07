@@ -9,6 +9,7 @@ export default function PersonalInfoPage() {
           id="firstname"
           type="text"
           required
+          value={state.firstName}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_PERSONAL_INFO",
@@ -24,6 +25,7 @@ export default function PersonalInfoPage() {
           id="lastname"
           type="text"
           required
+          value={state.lastName}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_PERSONAL_INFO",
@@ -39,6 +41,7 @@ export default function PersonalInfoPage() {
           id="email"
           type="email"
           required
+          value={state.email}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_PERSONAL_INFO",
