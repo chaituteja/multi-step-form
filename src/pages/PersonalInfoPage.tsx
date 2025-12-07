@@ -1,4 +1,40 @@
+import { useReducer } from "react";
+
+interface FormData {
+  personaInfo: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
+}
+
+interface FormAction {
+  type: "UPDATE_PERSONAL_INFO";
+  payload: Partial<FormData["personaInfo"]>;
+}
+
+const initialPersonalInfoState: FormData["personaInfo"] = {
+  firstName: "",
+  lastName: "",
+  email: "",
+};
+
 export default function PersonalInfoPage() {
+  const [state, dispatch] = useReducer(
+    personalInfoReducer,
+    initialPersonalInfoState
+  );
+
+  function personalInfoReducer(
+    state = initialPersonalInfoState,
+    action: FormAction
+  ) {
+    return {
+      ...state,
+      ...action.payload,
+    };
+  }
+
   return (
     <form className="flex flex-col gap-8">
       <h1 className="text-4xl font-bol">Personal Information</h1>
@@ -21,7 +57,7 @@ export default function PersonalInfoPage() {
       <div className="flex flex-col gap-y-2">
         <label htmlFor="lastname">Last Name</label>
         <input
-          className="border-1 border-[#FFF] focus:bg-[#FFEB00] outline-none p-2 focus:rounded-sm focus:text-[#2A004E] text-[#FFEB00] font-bold"
+          className="border border-[#FFF] focus:bg-[#FFEB00] outline-none p-2 focus:rounded-sm focus:text-[#2A004E] text-[#FFEB00] font-bold"
           id="lastname"
           type="text"
           required
@@ -37,7 +73,7 @@ export default function PersonalInfoPage() {
       <div className="flex flex-col gap-y-2">
         <label htmlFor="email">Email</label>
         <input
-          className="border-1 border-[#FFF] focus:bg-[#FFEB00] outline-none p-2 focus:rounded-sm focus:text-[#2A004E] text-[#FFEB00] font-bold"
+          className="border border-[#FFF] focus:bg-[#FFEB00] outline-none p-2 focus:rounded-sm focus:text-[#2A004E] text-[#FFEB00] font-bold"
           id="email"
           type="email"
           required
