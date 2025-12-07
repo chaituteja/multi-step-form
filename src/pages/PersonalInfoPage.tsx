@@ -45,7 +45,7 @@ export default function PersonalInfoPage() {
 
   return (
     <form className="flex flex-col gap-8" onSubmit={nextPage}>
-      <h1 className="text-4xl font-bol">Personal Information</h1>
+      <h1 className="text-4xl font-bold">Personal Information</h1>
       <div className="flex flex-col gap-y-2">
         <label htmlFor="firstname">First Name</label>
         <input

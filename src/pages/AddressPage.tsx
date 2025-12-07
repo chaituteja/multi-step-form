@@ -45,7 +45,7 @@ export default function AddressPage() {
 
   return (
     <form className="flex flex-col gap-8" onSubmit={nextPage}>
-      <h1 className="text-4xl font-bol">Address Details</h1>
+      <h1 className="text-4xl font-bold">Address Details</h1>
       <div className="flex flex-col gap-y-2">
         <label htmlFor="street">Street Address</label>
         <input
