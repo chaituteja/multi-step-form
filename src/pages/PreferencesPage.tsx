@@ -98,6 +98,7 @@ export default function PreferencesPage() {
         <button
           className="p-2 border border-white rounded-sm transition-colors hover:bg-[#FFEB00] hover:text-[#2A004E]"
           onClick={() => navigate("/address")}
+          type="button"
         >
           Back
         </button>

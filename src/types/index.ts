@@ -25,5 +25,6 @@ export interface FormAction {
   payload:
     | Partial<FormData["personaInfo"]>
     | Partial<FormData["preferences"]>
-    | Partial<FormData["addressInfo"]>;
+    | Partial<FormData["addressInfo"]>
+    | null;
 }
