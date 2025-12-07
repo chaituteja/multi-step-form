@@ -1,23 +1,10 @@
-import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormContext } from "../context/FormContext";
 
 export default function PreferencesPage() {
-  const [state, dispatch] = useReducer(
-    personalInfoReducer,
-    initialPreferencesState
-  );
+  const { state, dispatch } = useFormContext();
 
   const navigate = useNavigate();
-
-  function personalInfoReducer(
-    state = initialPreferencesState,
-    action: FormAction
-  ) {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  }
 
   function nextPage(e: React.FormEvent) {
     e.preventDefault();
@@ -38,7 +25,7 @@ export default function PreferencesPage() {
           className="size-5 bg-[#9ACBD0] hover:bg-[#F39E60] checked:bg-[#FFEB00] cursor-pointer"
           id="newsletter"
           type="checkbox"
-          checked={state.newsletter}
+          checked={state.preferences.newsletter}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_PREFERENCES",
@@ -58,7 +45,7 @@ export default function PreferencesPage() {
           className="size-5 bg-[#9ACBD0] hover:bg-[#F39E60] checked:bg-[#FFEB00] cursor-pointer"
           id="notifications"
           type="checkbox"
-          checked={state.notifications}
+          checked={state.preferences.notifications}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_PREFERENCES",
@@ -78,7 +65,7 @@ export default function PreferencesPage() {
             type="radio"
             value="light"
             required
-            checked={state.theme === "light"}
+            checked={state.preferences.theme === "light"}
             onChange={(e) =>
               dispatch({
                 type: "UPDATE_PREFERENCES",
@@ -95,7 +82,7 @@ export default function PreferencesPage() {
             type="radio"
             value="dark"
             required
-            checked={state.theme === "dark"}
+            checked={state.preferences.theme === "dark"}
             onChange={(e) =>
               dispatch({
                 type: "UPDATE_PREFERENCES",

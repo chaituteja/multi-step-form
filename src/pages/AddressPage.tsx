@@ -1,23 +1,11 @@
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormContext } from "../context/FormContext";
 
 export default function AddressPage() {
-  const [state, dispatch] = useReducer(
-    addressInfoReducer,
-    initialAddressInfoState
-  );
+  const { state, dispatch } = useFormContext();
 
   const navigate = useNavigate();
-
-  function addressInfoReducer(
-    state = initialAddressInfoState,
-    action: FormAction
-  ) {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  }
 
   function nextPage(e: React.FormEvent) {
     e.preventDefault();
@@ -34,7 +22,7 @@ export default function AddressPage() {
           id="street"
           type="text"
           required
-          value={state.street}
+          value={state.addressInfo.street}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_ADDRESS_INFO",
@@ -50,7 +38,7 @@ export default function AddressPage() {
           id="city"
           type="text"
           required
-          value={state.city}
+          value={state.addressInfo.city}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_ADDRESS_INFO",
@@ -66,7 +54,7 @@ export default function AddressPage() {
           id="zip"
           type="text"
           required
-          value={state.zip}
+          value={state.addressInfo.zip}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_ADDRESS_INFO",

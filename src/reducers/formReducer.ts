@@ -1,6 +1,6 @@
 import type { FormAction, FormData } from "../types";
 
-const initialFormState: FormData = {
+export const initialFormState: FormData = {
   personaInfo: {
     firstName: "",
     lastName: "",
@@ -18,7 +18,7 @@ const initialFormState: FormData = {
   },
 };
 
-function formReducer(state: FormData, action: FormAction) {
+export function formReducer(state: FormData, action: FormAction) {
   switch (action.type) {
     case "UPDATE_PERSONAL_INFO":
       return {

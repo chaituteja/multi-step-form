@@ -1,23 +1,9 @@
-import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormContext } from "../context/FormContext";
 
 export default function PersonalInfoPage() {
-  const [state, dispatch] = useReducer(
-    personalInfoReducer,
-    initialPersonalInfoState
-  );
-
+  const { state, dispatch } = useFormContext();
   const navigate = useNavigate();
-
-  function personalInfoReducer(
-    state = initialPersonalInfoState,
-    action: FormAction
-  ) {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  }
 
   function nextPage(e: React.FormEvent) {
     e.preventDefault();
@@ -34,7 +20,7 @@ export default function PersonalInfoPage() {
           id="firstname"
           type="text"
           required
-          value={state.firstName}
+          value={state.personaInfo.firstName}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_PERSONAL_INFO",
@@ -50,7 +36,7 @@ export default function PersonalInfoPage() {
           id="lastname"
           type="text"
           required
-          value={state.lastName}
+          value={state.personaInfo.lastName}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_PERSONAL_INFO",
@@ -66,7 +52,7 @@ export default function PersonalInfoPage() {
           id="email"
           type="email"
           required
-          value={state.email}
+          value={state.personaInfo.email}
           onChange={(e) =>
             dispatch({
               type: "UPDATE_PERSONAL_INFO",

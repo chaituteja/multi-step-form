@@ -5,6 +5,7 @@ import AddressPage from "./pages/AddressPage";
 import PreferencesPage from "./pages/PreferencesPage";
 import Layout from "./layouts/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { FormProvider } from "./context/FormContext";
 
 const routes = [
   {
@@ -35,7 +36,11 @@ const routes = [
 const router = createBrowserRouter(routes);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <FormProvider>
+      <RouterProvider router={router} />;
+    </FormProvider>
+  );
 }
 
 export default App;
