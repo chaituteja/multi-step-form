@@ -1,25 +1,6 @@
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface FormData {
-  addressInfo: {
-    street: string;
-    city: string;
-    zip: string;
-  };
-}
-
-interface FormAction {
-  type: "UPDATE_ADDRESS_INFO";
-  payload: Partial<FormData["addressInfo"]>;
-}
-
-const initialAddressInfoState: FormData["addressInfo"] = {
-  street: "",
-  city: "",
-  zip: "",
-};
-
 export default function AddressPage() {
   const [state, dispatch] = useReducer(
     addressInfoReducer,

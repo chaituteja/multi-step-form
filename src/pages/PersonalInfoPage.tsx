@@ -1,25 +1,6 @@
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface FormData {
-  personaInfo: {
-    firstName: string;
-    lastName: string;
-    email: string;
-  };
-}
-
-interface FormAction {
-  type: "UPDATE_PERSONAL_INFO";
-  payload: Partial<FormData["personaInfo"]>;
-}
-
-const initialPersonalInfoState: FormData["personaInfo"] = {
-  firstName: "",
-  lastName: "",
-  email: "",
-};
-
 export default function PersonalInfoPage() {
   const [state, dispatch] = useReducer(
     personalInfoReducer,

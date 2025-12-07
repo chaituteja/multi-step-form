@@ -1,25 +1,6 @@
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface FormData {
-  preferences: {
-    newsletter: boolean;
-    notifications: boolean;
-    theme: "light" | "dark";
-  };
-}
-
-interface FormAction {
-  type: "UPDATE_PREFERENCES";
-  payload: Partial<FormData["preferences"]>;
-}
-
-const initialPreferencesState: FormData["preferences"] = {
-  newsletter: false,
-  notifications: true,
-  theme: "dark",
-};
-
 export default function PreferencesPage() {
   const [state, dispatch] = useReducer(
     personalInfoReducer,
